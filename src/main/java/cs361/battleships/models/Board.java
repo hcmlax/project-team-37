@@ -20,7 +20,7 @@ public class Board {
 	DO NOT change the signature of this method. It is used by the grading scripts.
 	 */
 	public boolean placeShip(Ship ship, int x, char y, boolean isVertical) {
-		int length=ship.Shiplen;
+		int length=ship.getShipLen();
 		String validLetters = "ABCDEFGHIJ";
 		if(isVertical){
 			int temp=validLetters.indexOf(y);

@@ -2,13 +2,13 @@ package cs361.battleships.models;
 public class Result {
 	private Ship ship;//The Result's reelated ship
 	private AtackStatus AtackStatus;
-	private Square Location;
+	private Square Location;// THe results location
 	public AtackStatus getResult() {
 		return this.AtackStatus;
 	}
 
 	public void setResult(AtackStatus result) {
-		this.result=result;
+		this.AtackStatus=result;
 	}
 
 	public Ship getShip() {//Return the ship information
@@ -20,7 +20,7 @@ public class Result {
 	}
 
 	public Square getLocation() {
-		return this.ship.square;
+		return this.Location;
 	}
 
 	public void setLocation(Square square) {

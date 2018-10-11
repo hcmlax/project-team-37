@@ -9,11 +9,13 @@ public class Ship {
 	private int ShipLen;
 
 	public Ship(String kind) {
-		OccupiedSquares=new ArrayList<Square>();//init the object of the square
-		if(kind==""){
-
-		}else if(kinds==""){
-
+		OccuipiedSquares=new ArrayList<Square>();//init the object of the square
+		if(kind=="Battleship"){
+			this.ShipLen=4;
+		}else if(kind=="Cruiser"){
+			this.ShipLen=3;
+		}else {
+			this.ShipLen=2;
 		}
 		//Check the type of ship and Setting the length
 	}
@@ -23,6 +25,6 @@ public class Ship {
 	}
 
 	public List<Square> getOccupiedSquares() {
-		return this.OccupiedSquares;
+		return this.OccuipiedSquares;
 	}
 }
