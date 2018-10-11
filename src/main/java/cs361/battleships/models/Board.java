@@ -25,7 +25,7 @@ public class Board {
 		for(int i=0;i<this.Ships.size();i++){
 			for(int j=0;j<this.Ships.get(i).getOccupiedSquares().size();j++){
 				char TempY=this.Ships.get(i).getOccupiedSquares().get(j).getColumn();
-				int TempX=this.Ships.get(i).getOccupiedSquares().get(j).getRow();
+				int TempX=this.Ships.get(i).getOccupiedSquares().get(j).getRow();//get the temp them check
 				if(TempY==Locate.getColumn() && TempX==Locate.getRow()){
 					return true;
 				}
@@ -87,7 +87,8 @@ public class Board {
 				return false;//out bound!
 			}
 		}
-		return false;
+		this.Ships.add(ship);//add ship into the list
+		return true;
 	}
 
 	/*
@@ -113,6 +114,10 @@ public class Board {
 		this.attacks.add(Temp);//add to the list
 		if(this.ifsink(Temp.getShip())){//if boat sunk
 			Temp.setResult(AtackStatus.SUNK);
+			Ships.remove(Temp.getShip());
+		}
+		if(this.Ships.isEmpty()){
+			Temp.setResult(AtackStatus.SURRENDER);
 		}
 		return Temp;
 	}
