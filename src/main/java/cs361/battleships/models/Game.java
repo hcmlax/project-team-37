@@ -7,6 +7,9 @@ import java.util.List;
 
 import static cs361.battleships.models.AtackStatus.*;
 
+//import package to get random numbers
+import java.util.Random;
+
 public class Game {
 
     @JsonProperty private Board playersBoard = new Board();
@@ -49,18 +52,56 @@ public class Game {
         return true;
     }
 
-    private char randCol() {
-        // TODO implement
-        return 'X';
+    //get a random col from A-J
+    public char randCol() {
+
+        //create a string of the valid columns
+        String validLetters = "ABCDEFGHIJ";
+
+        //get the length of validLetters
+        int strLen = validLetters.length();
+
+        //create a random object to get an index from validLetters
+        Random randNum = new Random();
+
+        //get a random number and take the letter from that index
+        char col = validLetters.charAt(randNum.nextInt(strLen));
+
+        return col;
     }
 
-    private int randRow() {
-        // TODO implement
-        return 0;
+    //get a random row from 1-10
+    public int randRow() {
+
+        //create random object to get a random number
+        Random randNum = new Random();
+
+        //use function from random class to get a number from 0-9
+        int row = randNum.nextInt(10);
+
+        //increment row so number is between 1-10
+        row++;
+
+        //return random value for row
+        return row;
     }
 
-    private boolean randVertical() {
-        // TODO implement
-        return false;
+    //get a random boolean value
+    public boolean randVertical() {
+
+        //create a random object
+        Random randNum = new Random();
+
+        //get a random number between 0 and 1
+        int num = randNum.nextInt(2);
+
+        //if number is 1, return true
+        if(num == 1){
+            return true;
+        }
+        //if number is 0, return false
+        else {
+            return false;
+        }
     }
 }
