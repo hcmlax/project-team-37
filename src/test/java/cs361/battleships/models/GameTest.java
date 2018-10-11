@@ -34,5 +34,27 @@ public class GameTest {
         //this should fail 50% of the time
         assert(randBool);
     }
+
+    @Test
+    public void testgameplaceship(){
+        Game game= new Game();
+        Ship ship1= new Ship("MINSWEEPER");
+        game.placeShip(ship1,5,'G',false);
+        //boolean captured=game.playersBoard.Checkifused(new Square(5,'G'));
+        //assertTrue(captured);
+    }
+
+    @Test
+    public void testgameprocess(){
+        Game game= new Game();
+        Ship ship1= new Ship("MINESWEEPER");
+        Ship ship2= new Ship("DESTROYER");
+        Ship ship3= new Ship("BATTLESHIP");
+        game.placeShip(ship1,8,'H',true);
+        game.placeShip(ship2,9,'C',false);
+        game.placeShip(ship3,10,'F',false);
+        boolean attackresult=game.attack(5,'c');
+        assertTrue(attackresult);
+    }
 }
 

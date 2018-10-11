@@ -10,9 +10,9 @@ public class Ship {
 
 	public Ship(String kind) {
 		OccuipiedSquares=new ArrayList<Square>();//init the object of the square
-		if(kind=="Battleship"){
+		if(kind=="BATTLESHIP"){
 			this.ShipLen=4;
-		}else if(kind=="Cruiser"){
+		}else if(kind=="DESTROYER"){
 			this.ShipLen=3;
 		}else {
 			this.ShipLen=2;
