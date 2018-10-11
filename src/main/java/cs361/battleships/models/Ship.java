@@ -10,7 +10,12 @@ public class Ship {
 
 	public Ship(String kind) {
 		OccupiedSquares=new ArrayList<Square>();//init the object of the square
-		if()//Check the type of ship and Setting the length
+		if(kind==""){
+
+		}else if(kinds==""){
+
+		}
+		//Check the type of ship and Setting the length
 	}
 
 	public int getShipLen() {

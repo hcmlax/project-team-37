@@ -21,10 +21,31 @@ public class Board {
 	 */
 	public boolean placeShip(Ship ship, int x, char y, boolean isVertical) {
 		int length=ship.Shiplen;
+		String validLetters = "ABCDEFGHIJ";
 		if(isVertical){
-			if()
+			int temp=validLetters.indexOf(y);
+			if(temp+length-1<BoardsizeY){
+				for(int i=0;i<length;i++){
+					Square Sq=new Square(x,validLetters.charAt(temp+i));
+					Sq.setRow(x);
+					Sq.setColumn(validLetters.charAt(temp+i));
+					ship.getOccupiedSquares().add(Sq);
+				}
+			}else{
+				return false;//out bound!
+			}
 		}else{
+			if(x+length-1<BoardSizeX){
+				for(int i=0;i<length;i++){
+					Square Sq=new Square((x+i),y);
+					Sq.setRow(x+i);
+					Sq.setColumn(y);
+					ship.getOccupiedSquares().add(Sq);//Add to the SHips OccupiedSquares
+				}
 
+			}else{
+				return false;//out bound!
+			}
 		}
 		return false;
 	}
@@ -34,10 +55,28 @@ public class Board {
 	 */
 	public Result attack(int x, char y) {
 		Result Temp=new Result();
-		for(int i=0;i<this.Ships.size();i++){//check if ship on the attack
-			if
+		int HitedNum=0;
+		for(int i=0;i<this.Ships.size();i++) {//check if ship on the attack
+			for(int j=0;j<this.Ships.get(i).getOccupiedSquares().size();j++){
+				if(this.Ships.get(j).getOccupiedSquares().get(j).getRow()==x && this.Ships.get(j).getOccupiedSquares().get(j).getColumn()==y){//if it is hited
+					AtackStatus atk=AtackStatus.HIT;
+					Temp.setResult(atk);
+					Square Location=new Square();
+					Location.setColumn(y);
+					Location.setRow(x);
+					Temp.setLocation(Location);
+					Temp.setShip(this.Ships.get(i));
+				}else{//if Miss
+					AtackStatus atk=AtackStatus.MISS;
+					Temp.setResult(atk);
+					Square Location=new Square();
+					Location.setColumn(y);
+					Location.setRow(x);
+					Temp.setLocation(Location);
+				}
+			}
 		}
-		attacks.add
+		this.attacks.add(Temp);//add to the list
 		return Temp;
 	}
 
@@ -50,7 +89,6 @@ public class Board {
 	}
 
 	public List<Result> getAttacks() {
-		//TODO implement
 		return this.attacks;
 	}
 
