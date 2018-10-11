@@ -13,12 +13,42 @@ public class Board {
 	private int BoardSizeX;
 	private int BoardsizeY;
 	public Board() {
-
+		this.BoardSizeX=10;
+		this.BoardsizeY=10;
 	}
 
 	/*
 	DO NOT change the signature of this method. It is used by the grading scripts.
 	 */
+
+	public boolean Checkifused(Square Locate){
+		for(int i=0;i<this.Ships.size();i++){
+			for(int j=0;j<this.Ships.get(i).getOccupiedSquares().size();j++){
+				char TempY=this.Ships.get(i).getOccupiedSquares().get(j).getColumn();
+				int TempX=this.Ships.get(i).getOccupiedSquares().get(j).getRow();
+				if(TempY==Locate.getColumn() && TempX==Locate.getRow()){
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
+	public boolean ifsink(Ship shipc){
+		int hits=0;//COunt the hit
+			for(int j=0;j<attacks.size();j++){
+				if(attacks.get(j).getShip()==shipc){
+					hits++;
+				}
+			}
+		if(hits==shipc.getShipLen()){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+
 	public boolean placeShip(Ship ship, int x, char y, boolean isVertical) {
 		int length=ship.getShipLen();
 		String validLetters = "ABCDEFGHIJ";
@@ -29,7 +59,12 @@ public class Board {
 					Square Sq=new Square(x,validLetters.charAt(temp+i));
 					Sq.setRow(x);
 					Sq.setColumn(validLetters.charAt(temp+i));
-					ship.getOccupiedSquares().add(Sq);
+					if(this.Checkifused(Sq)){//CHeck if it cover
+						ship.getOccupiedSquares().add(Sq);
+					}
+					else {
+						return false;
+					}
 				}
 			}else{
 				return false;//out bound!
@@ -40,7 +75,12 @@ public class Board {
 					Square Sq=new Square((x+i),y);
 					Sq.setRow(x+i);
 					Sq.setColumn(y);
-					ship.getOccupiedSquares().add(Sq);//Add to the SHips OccupiedSquares
+					if(this.Checkifused(Sq)){//CHeck if it cover
+						ship.getOccupiedSquares().add(Sq);
+					}
+					else {
+						return false;
+					}
 				}
 
 			}else{
@@ -59,24 +99,21 @@ public class Board {
 		for(int i=0;i<this.Ships.size();i++) {//check if ship on the attack
 			for(int j=0;j<this.Ships.get(i).getOccupiedSquares().size();j++){
 				if(this.Ships.get(j).getOccupiedSquares().get(j).getRow()==x && this.Ships.get(j).getOccupiedSquares().get(j).getColumn()==y){//if it is hited
-					AtackStatus atk=AtackStatus.HIT;
-					Temp.setResult(atk);
-					Square Location=new Square();
-					Location.setColumn(y);
-					Location.setRow(x);
+					Temp.setResult(AtackStatus.HIT);
+					Square Location=new Square(x,y);
 					Temp.setLocation(Location);
 					Temp.setShip(this.Ships.get(i));
 				}else{//if Miss
-					AtackStatus atk=AtackStatus.MISS;
-					Temp.setResult(atk);
-					Square Location=new Square();
-					Location.setColumn(y);
-					Location.setRow(x);
+					Temp.setResult(AtackStatus.MISS);
+					Square Location=new Square(x,y);
 					Temp.setLocation(Location);
 				}
 			}
 		}
 		this.attacks.add(Temp);//add to the list
+		if(this.ifsink(Temp.getShip())){//if boat sunk
+			Temp.setResult(AtackStatus.SUNK);
+		}
 		return Temp;
 	}
 
