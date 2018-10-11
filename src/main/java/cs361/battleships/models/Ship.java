@@ -2,18 +2,22 @@ package cs361.battleships.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.util.List;
+import java.util.*;
 
 public class Ship {
+	private List<Square> OccuipiedSquares;
+	private int ShipLen;
 
-	@JsonProperty private List<Square> occupiedSquares;
-	
 	public Ship(String kind) {
-		//TODO implement
+		OccupiedSquares=new ArrayList<Square>();//init the object of the square
+		if()//Check the type of ship and Setting the length
+	}
+
+	public int getShipLen() {
+		return ShipLen;
 	}
 
 	public List<Square> getOccupiedSquares() {
-		//TODO implement
-		return null;
+		return this.OccupiedSquares;
 	}
 }

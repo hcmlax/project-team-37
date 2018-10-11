@@ -8,15 +8,24 @@ public class Board {
 	/*
 	DO NOT change the signature of this method. It is used by the grading scripts.
 	 */
+	private List<Ship> Ships;
+	private List<Result> attacks;
+	private int BoardSizeX;
+	private int BoardsizeY;
 	public Board() {
-		// TODO Implement
+
 	}
 
 	/*
 	DO NOT change the signature of this method. It is used by the grading scripts.
 	 */
 	public boolean placeShip(Ship ship, int x, char y, boolean isVertical) {
-		// TODO Implement
+		int length=ship.Shiplen;
+		if(isVertical){
+			if()
+		}else{
+
+		}
 		return false;
 	}
 
@@ -24,25 +33,28 @@ public class Board {
 	DO NOT change the signature of this method. It is used by the grading scripts.
 	 */
 	public Result attack(int x, char y) {
-		//TODO Implement
-		return null;
+		Result Temp=new Result();
+		for(int i=0;i<this.Ships.size();i++){//check if ship on the attack
+			if
+		}
+		attacks.add
+		return Temp;
 	}
 
 	public List<Ship> getShips() {
-		//TODO implement
-		return null;
+		return this.Ships;
 	}
 
 	public void setShips(List<Ship> ships) {
-		//TODO implement
+		this.Ships=ships;
 	}
 
 	public List<Result> getAttacks() {
 		//TODO implement
-		return null;
+		return this.attacks;
 	}
 
 	public void setAttacks(List<Result> attacks) {
-		//TODO implement
+		this.attacks=attacks;
 	}
 }
