@@ -1,8 +1,8 @@
 package cs361.battleships.models;
 public class Result {
-	private Ship ship;//The Result's reelated ship
+	private Ship ship;//The Result's related ship
 	private AtackStatus AtackStatus;
-	private Square Location;// THe results location
+	private Square Location;// The results location
 	public AtackStatus getResult() {
 		return this.AtackStatus;
 	}
