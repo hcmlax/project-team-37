@@ -8,6 +8,10 @@ public class Ship {
 	private List<Square> occuipiedSquares;
 	private int shipLen;
 
+	public Ship() {
+		occuipiedSquares = new ArrayList<>();
+	}
+
 	public Ship(String kind) {
 		occuipiedSquares=new ArrayList<Square>();//init the object of the square
 		if(kind=="BATTLESHIP"){
