@@ -14,9 +14,9 @@ public class Ship {
 
 	public Ship(String kind) {
 		occuipiedSquares=new ArrayList<Square>();//init the object of the square
-		if(kind=="BATTLESHIP"){
+		if(kind.equals("BATTLESHIP")){
 			this.shipLen=4;
-		}else if(kind=="DESTROYER"){
+		}else if(kind.equals("DESTROYER")){
 			this.shipLen=3;
 		}else {
 			this.shipLen=2;
