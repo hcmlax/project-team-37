@@ -34,7 +34,7 @@ public class Board {
 	}
 
 	public boolean ifsink(Ship shipc){
-		int hits=0;//Count the hit
+		int hits=0; //Count the hit
 			for(int j=0;j<attacks.size();j++){
 				if(attacks.get(j).getShip()==shipc && attacks.get(j).getShip()!=null && shipc!=null){
 					hits++;

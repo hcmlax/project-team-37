@@ -1,14 +1,14 @@
 package cs361.battleships.models;
 public class Result {
 	private Ship ship;//The Result's related ship
-	private AtackStatus AtackStatus;
-	private Square Location;// The results location
+	private AtackStatus atackStatus;
+	private Square location;// The results location
 	public AtackStatus getResult() {
-		return this.AtackStatus;
+		return this.atackStatus;
 	}
 
 	public void setResult(AtackStatus result) {
-		this.AtackStatus=result;
+		this.atackStatus=result;
 	}
 
 	public Ship getShip() {//Return the ship information
@@ -20,10 +20,10 @@ public class Result {
 	}
 
 	public Square getLocation() {
-		return this.Location;
+		return this.location;
 	}
 
 	public void setLocation(Square square) {
-		this.Location=square;
+		this.location=square;
 	}
 }
